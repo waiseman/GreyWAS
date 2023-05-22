@@ -5,8 +5,8 @@
 <h3>Here is Student Form</h3>
 
 <EditForm Model="@student" OnValidSubmit="@HandleOnSubmit">
-    <DataAnnotationsValidator/>
-    <ValidationSummary/>
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
 
     <label>
@@ -14,17 +14,17 @@
         <InputNumber @bind-Value="student.Id" />
     </label>
     <br>
-     <label>
+    <label>
         Enter Student Name :
         <InputText @bind-Value="student.Name" />
     </label>
     <br>
-     <label>
+    <label>
         Enter Student Marks :
         <InputNumber @bind-Value="student.Totalmarks" />
     </label>
     <br>
-    <button type="submit" >Submit</button>
+    <button type="submit">Submit</button>
 
 
 
@@ -39,17 +39,17 @@
 @code {
 
     Student student = new Student()
-    {
-        Totalmarks=0
-    };
+        {
+            Totalmarks = 0
+        };
 
-    void HandleOnSubmit()
+    async void HandleOnSubmit()
     {
         //Process form data
-          var res=await Http.PostAsJsonAsync<Student>("api/Students",student);
-            res.StatusCode=200
-    
-    
+        var res = await Http.PostAsJsonAsync<Student>("api/Students", student);
+        //res.StatusCode=200
+
+
     }
 
 
